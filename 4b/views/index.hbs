@@ -1,0 +1,21 @@
+{{>header}}
+{{#if message}}
+<div class="alert alert-{{message.type}}" role="alert">
+    {{message.message}}
+</div>
+{{/if}}
+{{>navbar}}
+<div class="index-main">
+    {{#each provinsi}}
+    <div class="car-card">
+        <img src="{{this.photo}}" alt="photo provinsi">
+        <h1> {{this.nama}} </h1>
+        <p class="price"> {{this.tanggal}} </p>
+        <a href="provinsi-detail/{{this.id}}"><p><button>View Details</button></p></a> 
+    </div>
+    {{/each}}
+</div>
+
+
+
+{{footer}}

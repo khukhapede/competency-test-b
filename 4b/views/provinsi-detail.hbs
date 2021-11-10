@@ -1,0 +1,37 @@
+{{>header}}
+{{#if message}}
+<div class="alert alert-{{message.type}}" role="alert">
+    {{message.message}}
+</div>
+{{/if}}
+{{>navbar}}
+<div class="detail-main">
+    <div class="prov-detail">
+        <div class="left-image">
+            <img src="{{provinsi.photo}}">
+        </div>
+        <div class="right-detail">
+            <div class="product-description">
+            <h1 name="nama">{{provinsi.nama}}</h1>
+            <p>Hari Jadi: {{provinsi.tanggal}} </p>
+            <p>pulau:{{provinsi.pulau}} </p>
+            <a href="/edit-provinsi/{{provinsi.id}}" class="btn-delete">update</a>
+            <a href="/delete-provinsi/{{provinsi.id}}" class="btn-delete">delete</a>
+    </div>
+        </div>
+    </div>
+    <div class="kabupaten-list">
+        {{#each kabupaten}}
+        <div class="car-card">
+            <img src="{{this.photo}}" alt="photo kabupaten">
+            <h1> {{this.nama}} </h1>
+            <p class="price"> {{this.tanggal}} </p>
+            <a href="kabupaten-detail/{{this.id}}"><p><button>View Details</button></p></a> 
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+
+
+{{footer}}

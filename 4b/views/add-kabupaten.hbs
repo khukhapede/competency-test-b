@@ -1,0 +1,46 @@
+{{> header}}
+{{#if message}}
+<div class="alert alert-{{message.type}}" role="alert">
+    {{message.message}}
+</div>
+{{/if}}
+{{> navbar}}
+
+<div class="container text-center pt-5">
+    <form action="/add-kabupaten" method="POST" enctype="multipart/form-data">
+        <div class="file-input-group text-start">
+            <label for="file">Attache Thumbnail <img src="/public/icons/attach.svg" alt=""></label>
+            <input type="file" hidden id="file" name="image" onchange="handleChange()"
+                aria-label="File browser example">
+            <div id="preview-thumbnail"></div>
+        </div>
+        <div>
+            <label for="provinsi">pilih provinsi:</label>
+            <select class="carOpt" id="provinsi" name="provinsi">
+            {{#each provinsi}}
+                <option value="{{this.id}}">{{this.nama}}</option>
+            {{/each}}
+            </select>
+        </div>
+        <div>
+            <input type="text" placeholder="nama kabupaten" name="nama">
+        </div>
+        <div>
+            <input type="text" placeholder="hari jadi(dd-mm-yyyy)" name="diresmikan">
+        </div>
+        <div class="text-end">
+            <button class="btn-submit-addcar">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function handleChange() {
+        const previewElement = document.getElementById('preview-thumbnail')
+        const value = URL.createObjectURL(event.target.files[0])
+
+        previewElement.innerHTML = `<img src=${value} style="width:250px; margin-left: 170px;" class="mb-3" />`
+    }
+</script>
+
+{{> footer}}
